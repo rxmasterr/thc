@@ -12,24 +12,19 @@
   </style>
   <script>
     function pokazInformacje(elementId) {
-      var element = document.getElementById(elementId);
-      var wszystkieObrazy = document.getElementsByClassName("interaktywny-obraz");
-      var wszystkieInformacje = document.getElementsByClassName("informacje");
+  var element = document.getElementById(elementId);
+  var wszystkieObrazy = document.getElementsByClassName("interaktywny-obraz");
+  var wszystkieInformacje = document.getElementsByClassName("informacje");
 
-      // Pokazywanie lub ukrywanie wybranego bloku informacji
-      for (var i = 0; i < wszystkieInformacje.length; i++) {
-        if (wszystkieInformacje[i].id === elementId) {
-          if (wszystkieInformacje[i].style.display === "none") {
-            wszystkieInformacje[i].style.display = "block";
-          } else {
-            wszystkieInformacje[i].style.display = "none";
-          }
-        } else {
-          wszystkieInformacje[i].style.display = "none";
-        }
-      }
+  // Pokazywanie wybranego bloku informacji i ukrywanie pozostałych
+  for (var i = 0; i < wszystkieInformacje.length; i++) {
+    if (wszystkieInformacje[i].id === elementId) {
+      wszystkieInformacje[i].style.display = "block";
+    } else {
+      wszystkieInformacje[i].style.display = "none";
     }
-
+  }
+}
     function wyszukaj() {
   var input = document.getElementById("szukajka");
   var filtr = input.value.toUpperCase();
