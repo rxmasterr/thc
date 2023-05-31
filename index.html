@@ -1552,33 +1552,31 @@ document.getElementById("obraz23").classList.add("highlight");
 	}
 	
 	function pokazInformacje(elementId) {
-      var element = document.getElementById(elementId);
-      var wszystkieObrazy = document.getElementsByClassName("interaktywny-obraz");
-      var wszystkieInformacje = document.getElementsByClassName("informacje");
-      var obraz = document.getElementById(elementId);
-  
-      // Sprawdzenie, czy kliknięty obraz ma już klasę "highlight"
-      var czyPodswietlony = obraz.classList.contains("highlight");
-  
-      // Usunięcie klasy "highlight" ze wszystkich obrazów
-      for (var i = 0; i < wszystkieObrazy.length; i++) {
-        wszystkieObrazy[i].classList.remove("highlight");
-      }
-  
-      // Dodanie klasy "highlight" do klikniętego obrazu tylko jeśli nie był podświetlony wcześniej
-      if (!czyPodswietlony) {
-        obraz.classList.add("highlight");
-      }
-  
-      // Pokazywanie wybranego bloku informacji i ukrywanie pozostałych
-      for (var i = 0; i < wszystkieInformacje.length; i++) {
-        if (wszystkieInformacje[i].id === elementId) {
-          wszystkieInformacje[i].style.display = "block";
-        } else {
-          wszystkieInformacje[i].style.display = "none";
-        }
-      }
+  var element = document.getElementById(elementId);
+  var wszystkieObrazy = document.getElementsByClassName("interaktywny-obraz");
+  var wszystkieInformacje = document.getElementsByClassName("informacje");
+  var obraz = document.getElementById(elementId);
+
+  // Sprawdzenie, czy kliknięty obraz ma już klasę "highlight"
+  var czyPodswietlony = obraz.classList.contains("highlight");
+
+  // Usunięcie klasy "highlight" ze wszystkich obrazów
+  for (var i = 0; i < wszystkieObrazy.length; i++) {
+    wszystkieObrazy[i].classList.remove("highlight");
+  }
+
+  // Dodanie klasy "highlight" do klikniętego obrazu i zmiana widoczności informacji
+  obraz.classList.toggle("highlight");
+  element.style.display = obraz.classList.contains("highlight") ? "block" : "none";
+
+  // Ukrywanie pozostałych informacji
+  for (var i = 0; i < wszystkieInformacje.length; i++) {
+    if (wszystkieInformacje[i].id !== elementId) {
+      wszystkieInformacje[i].style.display = "none";
     }
+  }
+}
+
     
     function wyszukaj() {
       var input = document.getElementById("szukajka");
